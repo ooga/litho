@@ -27,6 +27,10 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy.force 'junit:junit:4.12'
+}
+
 dependencies {
     implementation project(':litho-core')
     implementation project(':litho-stetho')
@@ -34,23 +38,26 @@ dependencies {
     implementation project(':litho-fresco')
     compileOnly project(':litho-annotations')
     annotationProcessor project(':litho-processor')
-
     // First-party
     implementation deps.soloader
     implementation deps.fresco
     implementation deps.stetho
-
     // Annotations
     compileOnly deps.jsr305
     compileOnly deps.inferAnnotations
-
     // Support Library
     implementation deps.supportAppCompat
     implementation deps.supportRecyclerView
-
     // Test only
     androidTestImplementation project(':litho-espresso')
     androidTestImplementation deps.supportEspresso
     androidTestImplementation deps.supportEspressoIntents
     androidTestImplementation deps.junit
+    implementation files('libs/navitia-sdk-0.2.0.jar')
+
+    compile 'io.swagger:swagger-annotations:1.5.8'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'com.squareup.okhttp:logging-interceptor:2.7.5'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'joda-time:joda-time:2.9.3'
 }
